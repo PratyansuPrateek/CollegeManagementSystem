@@ -1,0 +1,21 @@
+
+# Java and Maven
+**/target/
+*.class
+
+# IDE files
+**/.settings/
+**/.classpath
+**/.project
+**/.idea/
+*.iml
+
+# Logs
+*.log
+
+# Environment secrets
+.env
+.env.*
+!*.env.example
+**/application-local.properties
+**/application-local.yml

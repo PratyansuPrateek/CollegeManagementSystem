@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Update Mail</title>
+
+<style>
+
+body{
+height:100vh;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+background: linear-gradient(135deg,#7b5cff,#c86dd7);
+font-family: Arial, sans-serif;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+width:400px;
+}
+
+.container h2{
+margin-bottom:25px;
+}
+
+input{
+width:80%;
+padding:12px;
+border-radius:25px;
+border:1px solid #ccc;
+outline:none;
+font-size:16px;
+margin-bottom:20px;
+}
+
+.btn{
+background:#c86dd7;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:25px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#7b5cff;
+transform:scale(1.05);
+}
+
+.back-btn{
+background:#6c757d;
+margin-left:10px;
+}
+
+.back-btn:hover{
+background:#495057;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>📧 Update Mail</h2>
+
+<input type="text" id="mail" placeholder="Enter new mail">
+
+<br>
+
+<button class="btn" onclick="updateMail()">Update</button>
+
+<button class="btn back-btn" onclick="goBack()">Back</button>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+function updateMail(){
+
+const mail = document.getElementById("mail").value;
+
+fetch(`http://localhost:8080/student/UpdateStudent/${id}`,{
+method:"PATCH",
+headers:{
+"Content-Type":"application/json"
+},
+body: JSON.stringify({
+mail: mail
+})
+})
+.then(res => res.json())
+.then(data => {
+
+alert("Mail Updated Successfully");
+
+window.location.href="viewStudent.html";
+
+})
+.catch(error => console.error(error));
+
+}
+
+function goBack(){
+window.location.href="updateStudent.html?id="+id;
+}
+
+</script>
+
+</body>
+</html>

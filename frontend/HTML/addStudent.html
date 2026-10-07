@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Student</title>
+
+<style>
+
+body{
+height:100vh;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+background: linear-gradient(135deg,#667eea,#764ba2);
+font-family:'Segoe UI', sans-serif;
+color:white;
+overflow:hidden;
+}
+
+/* Glow effect */
+body::before, body::after{
+content:"";
+position:absolute;
+width:350px;
+height:350px;
+background:rgba(255,255,255,0.1);
+border-radius:50%;
+filter:blur(80px);
+}
+
+body::before{ top:-100px; left:-100px; }
+body::after{ bottom:-100px; right:-100px; }
+
+/* Glass container */
+.container{
+background: rgba(255,255,255,0.1);
+backdrop-filter: blur(15px);
+padding:40px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+text-align:center;
+width:380px;
+transition:0.4s;
+}
+
+.container:hover{
+transform:translateY(-8px);
+}
+
+/* Title */
+.container h2{
+margin-bottom:25px;
+}
+
+/* Input group */
+.input-group{
+margin-bottom:15px;
+}
+
+input{
+width:100%;
+padding:12px;
+border-radius:25px;
+border:none;
+outline:none;
+font-size:15px;
+background: rgba(255,255,255,0.2);
+color:white;
+}
+
+input::placeholder{
+color:#ddd;
+}
+
+/* Buttons */
+.btn{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+font-size:15px;
+cursor:pointer;
+transition:0.3s;
+margin:5px;
+}
+
+.submit-btn{
+background: linear-gradient(45deg,#ff7eb3,#ff758c);
+color:white;
+}
+
+.submit-btn:hover{
+transform:scale(1.08);
+background: linear-gradient(45deg,#43e97b,#38f9d7);
+}
+
+.back-btn{
+background:#6c757d;
+color:white;
+}
+
+.back-btn:hover{
+background:#495057;
+}
+
+/* Message */
+#message{
+margin-top:15px;
+font-weight:bold;
+}
+
+.success{
+color:#4ade80;
+}
+
+.error{
+color:#f87171;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>➕ Add Student</h2>
+
+<form id="studentForm">
+
+<div class="input-group">
+<input type="number" id="id" placeholder="Enter ID" required>
+</div>
+
+<div class="input-group">
+<input type="text" id="name" placeholder="Enter Name" required>
+</div>
+
+<div class="input-group">
+<input type="number" id="age" placeholder="Enter Age" required>
+</div>
+
+<div class="input-group">
+<input type="email" id="mail" placeholder="Enter Email" required>
+</div>
+
+<button type="submit" class="btn submit-btn">Add Student</button>
+<button type="button" class="btn back-btn" onclick="goBack()">Back</button>
+
+</form>
+
+<p id="message"></p>
+
+</div>
+
+<script>
+
+const BASE_URL = "http://localhost:8080";
+
+document.getElementById("studentForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+const student = {
+id: document.getElementById("id").value,
+name: document.getElementById("name").value,
+age: document.getElementById("age").value,
+mail: document.getElementById("mail").value
+};
+
+fetch(`${BASE_URL}/student/add`, {
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body: JSON.stringify(student)
+})
+.then(res => {
+if(res.ok){
+document.getElementById("message").innerText = "✅ Student Added Successfully!";
+document.getElementById("message").className = "success";
+document.getElementById("studentForm").reset();
+}else{
+throw new Error();
+}
+})
+.catch(()=>{
+document.getElementById("message").innerText = "❌ Failed to add student!";
+document.getElementById("message").className = "error";
+});
+
+});
+
+function goBack(){
+window.location.href="student.html";
+}
+
+</script>
+
+</body>
+</html>     

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+
+<style>
+
+body{
+height:100vh;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+background: linear-gradient(135deg,#667eea,#764ba2);
+font-family: 'Segoe UI', sans-serif;
+overflow:hidden;
+}
+
+/* Glow effects */
+body::before, body::after{
+content:"";
+position:absolute;
+width:400px;
+height:400px;
+background:rgba(255,255,255,0.1);
+border-radius:50%;
+filter:blur(80px);
+}
+
+body::before{
+top:-100px;
+left:-100px;
+}
+
+body::after{
+bottom:-100px;
+right:-100px;
+}
+
+/* Glass container */
+.home-box{
+backdrop-filter: blur(15px);
+background: rgba(255,255,255,0.1);
+padding:60px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+color:white;
+width:500px;
+transition:0.4s;
+}
+
+.home-box:hover{
+transform:translateY(-10px);
+}
+
+/* Title */
+.home-box h1{
+margin-bottom:30px;
+font-weight:700;
+}
+
+/* Card buttons container */
+.card-container{
+display:flex;
+justify-content:space-between;
+gap:20px;
+}
+
+/* Cards */
+.card{
+flex:1;
+padding:30px;
+border-radius:15px;
+cursor:pointer;
+transition:0.3s;
+background: rgba(255,255,255,0.15);
+backdrop-filter: blur(10px);
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card:hover{
+transform:scale(1.08);
+background: linear-gradient(45deg,#ff7eb3,#ff758c);
+}
+
+/* Icons */
+.icon{
+font-size:40px;
+margin-bottom:10px;
+}
+
+/* Text */
+.card h3{
+margin:10px 0;
+}
+
+.card p{
+font-size:14px;
+opacity:0.8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="home-box">
+
+<h1>🏠 Choose Your Role</h1>
+
+<div class="card-container">
+
+<div class="card" onclick="goToStudent()">
+<div class="icon">🎓</div>
+<h3>Student</h3>
+<p>View All Student, Add new Student</p>
+</div>
+
+<div class="card" onclick="goToLecturer()">
+<div class="icon">👨‍🏫</div>
+<h3>Lecturer</h3>
+<p>Manage students, marks & attendance</p>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function goToStudent(){
+window.location.href="student.html";
+}
+
+function goToLecturer(){
+window.location.href="lecturer.html";
+}
+
+</script>
+
+</body>
+</html>

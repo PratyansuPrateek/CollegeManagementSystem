@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Student</title>
+
+<style>
+
+body{
+height:100vh;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+background: linear-gradient(135deg,#7b5cff,#c86dd7);
+font-family: Arial, sans-serif;
+}
+
+.container{
+background:white;
+padding:50px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+width:450px;
+}
+
+.container h1{
+margin-bottom:30px;
+}
+
+.btn{
+background:#c86dd7;
+color:white;
+border:none;
+padding:15px 30px;
+margin:10px;
+font-size:18px;
+border-radius:30px;
+cursor:pointer;
+transition:0.3s;
+width:200px;
+}
+
+.btn:hover{
+background:#7b5cff;
+transform:scale(1.05);
+}
+
+.back-btn{
+background:#6c757d;
+}
+
+.back-btn:hover{
+background:#495057;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>✏️ Update Student</h1>
+
+<button class="btn" onclick="updateName()">Update Name</button>
+
+<button class="btn" onclick="updateAge()">Update Age</button>
+
+<button class="btn" onclick="updateMail()">Update Mail</button>
+
+<br><br>
+
+<button class="btn back-btn" onclick="goBack()">Back</button>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+function updateName(){
+window.location.href = `updateName.html?id=${id}`;
+}
+
+function updateAge(){
+window.location.href = `updateAge.html?id=${id}`;
+}
+
+function updateMail(){
+window.location.href = `updateMail.html?id=${id}`;
+}
+
+function goBack(){
+window.location.href = "viewStudent.html";
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>View Lecturers</title>
+
+<style>
+
+body{
+height:100vh;
+margin:0;
+background: linear-gradient(135deg,#667eea,#764ba2);
+font-family:'Segoe UI', sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+overflow:hidden;
+}
+
+/* Glow */
+body::before, body::after{
+content:"";
+position:absolute;
+width:350px;
+height:350px;
+background:rgba(255,255,255,0.1);
+border-radius:50%;
+filter:blur(80px);
+}
+body::before{ top:-100px; left:-100px; }
+body::after{ bottom:-100px; right:-100px; }
+
+/* Container */
+.container{
+background: rgba(255,255,255,0.1);
+backdrop-filter: blur(15px);
+padding:30px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.3);
+width:850px;
+text-align:center;
+}
+
+/* Title */
+h1{
+margin-bottom:20px;
+}
+
+/* Table */
+table{
+width:100%;
+border-collapse:collapse;
+border-radius:10px;
+overflow:hidden;
+}
+
+/* Header */
+th{
+background: linear-gradient(45deg,#ff7eb3,#ff758c);
+color:white;
+padding:12px;
+text-transform:uppercase;
+font-size:14px;
+}
+
+/* Rows */
+td{
+padding:12px;
+background: rgba(255,255,255,0.1);
+}
+
+tr{
+transition: all 0.3s ease;
+}
+
+tr:hover{
+transform:scale(1.02);
+background: rgba(255,255,255,0.2);
+}
+
+/* INPUT (EDIT MODE) */
+td input{
+width:90%;
+padding:6px;
+border-radius:8px;
+border:none;
+outline:none;
+text-align:center;
+}
+
+/* Buttons */
+button{
+padding:6px 14px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+margin:2px;
+font-size:13px;
+transition:0.3s;
+}
+
+/* EDIT */
+.edit-btn{
+background: linear-gradient(45deg,#4facfe,#00f2fe);
+color:white;
+}
+.edit-btn:hover{ transform:scale(1.1); }
+
+/* SAVE */
+.save-btn{
+background: linear-gradient(45deg,#43e97b,#38f9d7);
+color:black;
+}
+.save-btn:hover{ transform:scale(1.1); }
+
+/* CANCEL */
+.cancel-btn{
+background:#6c757d;
+color:white;
+}
+.cancel-btn:hover{ transform:scale(1.1); }
+
+/* DELETE */
+.delete-btn{
+background: linear-gradient(45deg,#ff4d4d,#ff0000);
+color:white;
+}
+.delete-btn:hover{ transform:scale(1.1); }
+
+/* Back */
+.back-btn{
+margin-top:20px;
+background:#6c757d;
+color:white;
+padding:10px 20px;
+border-radius:25px;
+}
+.back-btn:hover{
+background:#495057;
+transform:scale(1.05);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>👨‍🏫 Lecturer List</h1>
+
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Subject</th>
+<th>Mail</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="lecturerTable">
+</tbody>
+
+</table>
+
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+</div>
+
+<script src="../JS/lecturerApi.js"></script>
+
+<script>
+function goBack(){
+    window.location.href="lecturer.html";
+}
+</script>
+
+</body>
+</html>

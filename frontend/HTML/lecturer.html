@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Dashboard</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI', sans-serif;
+background: linear-gradient(135deg,#667eea,#764ba2);
+display:flex;
+height:100vh;
+color:white;
+}
+
+/* Sidebar */
+.sidebar{
+width:220px;
+background: rgba(0,0,0,0.2);
+backdrop-filter: blur(10px);
+padding:20px;
+display:flex;
+flex-direction:column;
+}
+
+.sidebar h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+.sidebar a{
+padding:12px;
+margin:5px 0;
+text-decoration:none;
+color:white;
+border-radius:10px;
+transition:0.3s;
+}
+
+.sidebar a:hover{
+background: rgba(255,255,255,0.2);
+}
+
+/* Main content */
+.main{
+flex:1;
+padding:40px;
+}
+
+/* Header */
+.header{
+font-size:28px;
+font-weight:bold;
+margin-bottom:30px;
+}
+
+/* Cards */
+.card-container{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.card{
+flex:1;
+min-width:200px;
+padding:25px;
+border-radius:15px;
+background: rgba(255,255,255,0.1);
+backdrop-filter: blur(10px);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+cursor:pointer;
+transition:0.3s;
+text-align:center;
+}
+
+.card:hover{
+transform:translateY(-8px) scale(1.05);
+background: linear-gradient(45deg,#ff7eb3,#ff758c);
+}
+
+/* Icon */
+.icon{
+font-size:40px;
+margin-bottom:10px;
+}
+
+/* Back button */
+.back-btn{
+margin-top:40px;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:#6c757d;
+color:white;
+cursor:pointer;
+}
+
+.back-btn:hover{
+background:#495057;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+<h2>👨‍🏫 Lecturer</h2>
+
+<a href="#">Dashboard</a>
+<a href="#" onclick="addLecturer()">Add Lecturer</a>
+<a href="#" onclick="viewLecturer()">View Lecturer</a>
+
+</div>
+
+<!-- Main -->
+<div class="main">
+
+<div class="header">Lecturer Dashboard</div>
+
+<div class="card-container">
+
+<div class="card" onclick="addLecturer()">
+<div class="icon">➕</div>
+<h3>Add Lecturer</h3>
+<p>Register new Lecturer details</p>
+</div>
+
+<div class="card" onclick="viewLecturer()">
+<div class="icon">📋</div>
+<h3>View Lecturer</h3>
+<p>See all Lecturer records</p>
+</div>
+
+</div>
+
+<button class="back-btn" onclick="goHome()">⬅ Back</button>
+
+</div>
+
+<script>
+
+function addLecturer(){
+window.location.href="addLecturer.html";
+}
+
+function viewLecturer(){
+window.location.href="viewLecturer.html";
+}
+
+function goHome(){
+window.location.href="home.html";
+}
+
+</script>
+
+</body>
+</html>
